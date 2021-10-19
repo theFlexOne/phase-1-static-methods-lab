@@ -1,3 +1,9 @@
+const capitalizeWord = (word, i) => {
+  if (i === 0) return Formatter.capitalize(word);
+  else if (EXCEPTIONS.some((exception) => word === exception)) return word;
+  else return Formatter.capitalize(word);
+};
+
 class Formatter {
   
   static capitalize(word) {
@@ -10,10 +16,11 @@ class Formatter {
 
   static titleize(string) {
     const EXCEPTIONS = ['the', 'a', 'an', 'but', 'of', 'and', 'for', 'at', 'by', 'from']
-    return string.split(" ").map((word, i) => {
+    const capitalizeWord = (word, i) => {
       if (i === 0) return Formatter.capitalize(word);
       else if (EXCEPTIONS.some((exception) => word === exception)) return word;
       else return Formatter.capitalize(word);
-    })
+    };
+    return string.split(" ").map(capitalizeWord).join(" ");
   }
 }
